@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Client</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="askIfSure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="askEnterFirstName">Please enter a first name</string>
+    <string name="askEnterLastName">Please enter a last name</string>
+    <string name="askChooseImage">Please choose an image</string>
+    <string name="lastName">Last name</string>
+</resources>
