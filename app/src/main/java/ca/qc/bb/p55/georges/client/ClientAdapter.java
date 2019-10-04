@@ -16,17 +16,13 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
-        void onDeleteClick(int position);
         void onEditClick(int position);
     }
 
     public static class ClientViewHolder extends RecyclerView.ViewHolder {
         public TextView  tvNom;
         public TextView  tvPrenom;
-        public ImageView ivPhoto;
-        public ImageView ivEtoile;
         public ImageView ivEdit;
-        public ImageView ivEffacer;
         public boolean estApprecie;
 
         public ClientViewHolder(View view, final OnItemClickListener listener) {
@@ -34,38 +30,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
             tvNom = view.findViewById(R.id.nomDeFamille);
             tvPrenom = view.findViewById(R.id.prenom);
-            ivPhoto = view.findViewById(R.id.imageView);
-            ivEtoile = view.findViewById(R.id.appreciation);
             ivEdit = view.findViewById(R.id.edit);
-            ivEffacer = view.findViewById(R.id.delete);
             estApprecie = false;
-
-            ivEffacer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // vérifier que le listener n'est pas null
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        // la position est valide?
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onDeleteClick(position);
-
-                        }
-                    }
-                }
-            });
-
-            ivEtoile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    estApprecie = !estApprecie;
-                    if (estApprecie) {
-                        ivEtoile.setImageResource(R.drawable.ic_star);
-                    } else {
-                        ivEtoile.setImageResource(R.drawable.ic_star_border);
-                    }
-                }
-            });
 
             ivEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,7 +69,6 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
         holder.tvNom.setText(client.getNom());
         holder.tvPrenom.setText(client.getPrenom());
-        holder.ivPhoto.setImageResource(client.getImage());
     }
 
     @Override

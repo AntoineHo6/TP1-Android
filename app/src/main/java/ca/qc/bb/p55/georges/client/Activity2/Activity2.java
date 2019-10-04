@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.client;
+package ca.qc.bb.p55.georges.client.Activity2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ca.qc.bb.p55.georges.client.R;
 
 public class Activity2 extends AppCompatActivity {
 
