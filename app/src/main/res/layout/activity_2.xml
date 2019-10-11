@@ -54,79 +54,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNomFamille" />
 
-    <TextView
-        android:id="@+id/txtViewProfilePic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Photo de profil:"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPrenom" />
-
-    <ImageView
-        android:id="@+id/imgViewCatfish"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewProfilePic"
-        app:srcCompat="@drawable/catfish"
-        app:tint="#80000000"
-        app:tintMode="src_over"
-        tools:srcCompat="@drawable/catfish" />
-
-    <ImageView
-        android:id="@+id/imgViewElon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgViewCatfish"
-        app:srcCompat="@drawable/elon_musk"
-        app:tint="#80000000"
-        app:tintMode="src_over"
-        tools:srcCompat="@drawable/elon_musk" />
-
-    <ImageView
-        android:id="@+id/imgViewNeil"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imgViewElon"
-        app:layout_constraintTop_toBottomOf="@+id/imgViewGreta"
-        app:srcCompat="@drawable/neil_degrass_tyson"
-        app:tint="#80000000"
-        app:tintMode="src_over"
-        tools:srcCompat="@drawable/neil_degrass_tyson" />
-
-    <ImageView
-        android:id="@+id/imgViewGreta"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/imgViewCatfish"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewProfilePic"
-        app:srcCompat="@drawable/greta_thunberg"
-        app:tint="#80000000"
-        app:tintMode="src_over"
-        tools:srcCompat="@drawable/greta_thunberg" />
-
     <Button
         android:id="@+id/btnSoumettre"
         android:layout_width="148dp"
         android:layout_height="70dp"
+        android:layout_marginBottom="16dp"
         android:text="Soumettre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgViewNeil"
-        app:layout_constraintVertical_bias="0.732" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

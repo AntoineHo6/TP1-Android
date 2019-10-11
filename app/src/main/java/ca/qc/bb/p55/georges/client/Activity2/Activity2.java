@@ -25,10 +25,8 @@ import ca.qc.bb.p55.georges.client.R;
 
 public class Activity2 extends AppCompatActivity {
 
-    public List<ImageView> imagesProfils;
     public EditText etNom;
     public EditText etPrenom;
-    public ImageView ivProfilSelectionne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +35,6 @@ public class Activity2 extends AppCompatActivity {
 
         etNom = findViewById(R.id.editTextNomFamille);
         etPrenom = findViewById(R.id.editTextPrenom);
-
-        imagesProfils = new ArrayList<>();
-
-        fillImagesProfilList();
-        setOnClickEventProfilePics();
 
         if (getIntent().getExtras() != null) {
             presetValues();
@@ -69,7 +62,6 @@ public class Activity2 extends AppCompatActivity {
 
                 intent.putExtra("nom", nom);
                 intent.putExtra("prenom", prenom);
-                intent.putExtra("idPhoto", (Integer) ivProfilSelectionne.getTag());
 
                 setResult(RESULT_OK, intent);
                 finish();
@@ -92,35 +84,6 @@ public class Activity2 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void fillImagesProfilList() {
-        imagesProfils.add((ImageView) findViewById(R.id.imgViewCatfish));
-        imagesProfils.add((ImageView) findViewById(R.id.imgViewGreta));
-        imagesProfils.add((ImageView) findViewById(R.id.imgViewElon));
-        imagesProfils.add((ImageView) findViewById(R.id.imgViewNeil));
-
-        imagesProfils.get(0).setTag(R.drawable.catfish);
-        imagesProfils.get(1).setTag(R.drawable.greta_thunberg);
-        imagesProfils.get(2).setTag(R.drawable.elon_musk);
-        imagesProfils.get(3).setTag(R.drawable.neil_degrass_tyson);
-    }
-
-    private void setOnClickEventProfilePics() {
-        for (int i = 0; i < imagesProfils.size(); i++) {
-            final ImageView ivTemp = imagesProfils.get(i);
-
-            ivTemp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (ivProfilSelectionne != null) {
-                        ivProfilSelectionne.setColorFilter(Color.argb(128, 0, 0, 0));
-                    }
-
-                    ivTemp.setColorFilter(Color.argb(0, 255, 255, 255));
-                    ivProfilSelectionne = ivTemp;
-                }
-            });
-        }
-    }
 
     private boolean checkForEmpty() {
         boolean isEmpty = false;
@@ -141,12 +104,6 @@ public class Activity2 extends AppCompatActivity {
             etPrenom.setError(null); // Enlève l’erreur du champ de saisie
         }
 
-        if (ivProfilSelectionne == null) {
-            Toast.makeText(this, getResources().getString(R.string.askChooseImage),
-                    Toast.LENGTH_SHORT).show();
-            isEmpty = true;
-        }
-
         return isEmpty;
     }
 
@@ -156,13 +113,5 @@ public class Activity2 extends AppCompatActivity {
 
         String prenom = getIntent().getStringExtra("prenom");
         ((EditText) findViewById(R.id.editTextPrenom)).setText(prenom);
-
-        int idPhoto = getIntent().getIntExtra("idPhoto", -1);
-        for (ImageView image : imagesProfils) {
-            if ((Integer) image.getTag() == idPhoto) {
-                image.setColorFilter(Color.argb(0, 255, 255, 255));
-                ivProfilSelectionne = image;
-            }
-        }
     }
 }

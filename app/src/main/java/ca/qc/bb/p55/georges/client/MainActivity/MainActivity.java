@@ -84,13 +84,11 @@ public class MainActivity extends AppCompatActivity {
     private void openActivity2Edit(int position){
         String nom = mainActivityModel.getList().get(position).getNom();
         String prenom = mainActivityModel.getList().get(position).getPrenom();
-        int idPhoto = mainActivityModel.getList().get(position).getImage();
         mainActivityModel.getList().remove(position);
 
         Intent intent = new Intent(this, Activity2.class);
         intent.putExtra("nom", nom);
         intent.putExtra("prenom", prenom);
-        intent.putExtra("idPhoto", idPhoto);
         startActivityForResult(intent, 1);
     }
 
