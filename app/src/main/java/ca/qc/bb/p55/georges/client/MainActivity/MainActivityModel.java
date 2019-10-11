@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import ca.qc.bb.p55.georges.client.Client;
+import ca.qc.bb.p55.georges.client.MyList;
 import ca.qc.bb.p55.georges.client.ClientAdapter;
 import ca.qc.bb.p55.georges.client.R;
 
 public class MainActivityModel {
     private AppCompatActivity mainActivity;
     private RecyclerView.LayoutManager  layoutManager;
-    private ArrayList<Client> list;
+    private ArrayList<MyList> list;
     private RecyclerView recyclerView;
     private ClientAdapter adapter;
 
@@ -23,8 +23,8 @@ public class MainActivityModel {
         layoutManager = new LinearLayoutManager(mainActivity);
 
         list = new ArrayList<>();
-        list.add(new Client("Côté", "Georges", R.drawable.tyrion));
-        list.add(new Client("Legault", "François", R.drawable.shrek));
+        list.add(new MyList("List 1"));
+        list.add(new MyList("List 2"));
 
         adapter = new ClientAdapter(list);
 
@@ -35,7 +35,7 @@ public class MainActivityModel {
         recyclerView.setAdapter(adapter);
     }
 
-    public ArrayList<Client> getList() {
+    public ArrayList<MyList> getList() {
         return list;
     }
 

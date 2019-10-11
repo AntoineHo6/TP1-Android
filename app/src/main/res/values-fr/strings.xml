@@ -8,7 +8,7 @@
     <string name="askEnterFirstName">Vous devez saisir un nom</string>
     <string name="askEnterLastName">Vous devez saisir un prenom</string>
     <string name="askChooseImage">Il faut choisir une image!!!!!!!!!!!! AHHHHHHH!!!</string>
-    <string name="lastName">Nom</string>
+    <string name="lastName">Nom de la liste</string>
     <string name="ProfilePic">Photo de profil</string>
     <string name="submit">Soumettre</string>
     <string name="firstName">Prenom</string>

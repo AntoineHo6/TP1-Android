@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientViewHolder> {
-    private ArrayList<Client>   list;
+    private ArrayList<MyList>   list;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -21,17 +21,13 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
     public static class ClientViewHolder extends RecyclerView.ViewHolder {
         public TextView  tvNom;
-        public TextView  tvPrenom;
         public ImageView ivEdit;
-        public boolean estApprecie;
 
         public ClientViewHolder(View view, final OnItemClickListener listener) {
             super(view);
 
             tvNom = view.findViewById(R.id.nomDeFamille);
-            tvPrenom = view.findViewById(R.id.prenom);
             ivEdit = view.findViewById(R.id.edit);
-            estApprecie = false;
 
             ivEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -48,7 +44,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         }
     }
 
-    public ClientAdapter(ArrayList<Client> list) {
+    public ClientAdapter(ArrayList<MyList> list) {
         this.list = list;
     }
 
@@ -65,10 +61,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
     @Override
     public void onBindViewHolder(@NonNull ClientViewHolder holder, int position) {
-        Client client = list.get(position);
-
-        holder.tvNom.setText(client.getNom());
-        holder.tvPrenom.setText(client.getPrenom());
+        MyList myList = list.get(position);
+        holder.tvNom.setText(myList.getNom());
     }
 
     @Override

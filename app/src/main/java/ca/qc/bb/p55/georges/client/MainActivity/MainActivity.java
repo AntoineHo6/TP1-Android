@@ -1,24 +1,20 @@
 package ca.qc.bb.p55.georges.client.MainActivity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.Comparator;
 
 import ca.qc.bb.p55.georges.client.Activity2.Activity2;
-import ca.qc.bb.p55.georges.client.Client;
+import ca.qc.bb.p55.georges.client.MyList;
 import ca.qc.bb.p55.georges.client.ClientAdapter;
 import ca.qc.bb.p55.georges.client.R;
 
@@ -50,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 String nom = data.getStringExtra("nom");
-                String prenom = data.getStringExtra("prenom");
-                int idPhoto = data.getIntExtra("idPhoto", -1);
 
-                addClientToList(nom, prenom, idPhoto);
+                addClientToList(nom);
             }
         }
     }
@@ -83,22 +77,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void openActivity2Edit(int position){
         String nom = mainActivityModel.getList().get(position).getNom();
-        String prenom = mainActivityModel.getList().get(position).getPrenom();
         mainActivityModel.getList().remove(position);
 
         Intent intent = new Intent(this, Activity2.class);
         intent.putExtra("nom", nom);
-        intent.putExtra("prenom", prenom);
         startActivityForResult(intent, 1);
     }
 
-    private void addClientToList(String nom, String prenom, int idPhoto) {
-        mainActivityModel.getList().add(new Client(nom, prenom, idPhoto));
+    private void addClientToList(String nom) {
+        mainActivityModel.getList().add(new MyList(nom));
 
         // Sort la liste
-        Collections.sort(mainActivityModel.getList(), new Comparator<Client>() {
+        Collections.sort(mainActivityModel.getList(), new Comparator<MyList>() {
             @Override
-            public int compare(Client o1, Client o2) {
+            public int compare(MyList o1, MyList o2) {
                 return o1.getNom().compareTo(o2.getNom());
             }
         });

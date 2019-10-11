@@ -7,7 +7,7 @@
     <string name="askEnterFirstName">Please enter a first name</string>
     <string name="askEnterLastName">Please enter a last name</string>
     <string name="askChooseImage">Please choose an image</string>
-    <string name="lastName">Last name</string>
+    <string name="lastName">List name</string>
     <string name="ProfilePic">Profile Picture</string>
     <string name="submit">Submit</string>
     <string name="firstName">First Name</string>

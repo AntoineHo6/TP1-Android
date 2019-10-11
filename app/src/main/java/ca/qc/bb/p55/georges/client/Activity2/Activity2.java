@@ -26,7 +26,6 @@ import ca.qc.bb.p55.georges.client.R;
 public class Activity2 extends AppCompatActivity {
 
     public EditText etNom;
-    public EditText etPrenom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,6 @@ public class Activity2 extends AppCompatActivity {
         setContentView(R.layout.activity_2);
 
         etNom = findViewById(R.id.editTextNomFamille);
-        etPrenom = findViewById(R.id.editTextPrenom);
 
         if (getIntent().getExtras() != null) {
             presetValues();
@@ -56,12 +54,7 @@ public class Activity2 extends AppCompatActivity {
                 // Uppercase first letter
                 nom = nom.substring(0, 1).toUpperCase() + nom.substring(1);
 
-                String prenom = ((EditText) findViewById(R.id.editTextPrenom)).getText().toString();
-                // Uppercase first letter
-                prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1);
-
                 intent.putExtra("nom", nom);
-                intent.putExtra("prenom", prenom);
 
                 setResult(RESULT_OK, intent);
                 finish();
@@ -96,22 +89,11 @@ public class Activity2 extends AppCompatActivity {
             etNom.setError(null); // Enlève l’erreur du champ de saisie
         }
 
-        if (etPrenom.getText().toString().trim().isEmpty()) {
-            etPrenom.setError(getResources().getString(R.string.askEnterLastName));
-            isEmpty = true;
-        }
-        else {
-            etPrenom.setError(null); // Enlève l’erreur du champ de saisie
-        }
-
         return isEmpty;
     }
 
     private void presetValues() {
         String nom = getIntent().getStringExtra("nom");
         ((EditText) findViewById(R.id.editTextNomFamille)).setText(nom);
-
-        String prenom = getIntent().getStringExtra("prenom");
-        ((EditText) findViewById(R.id.editTextPrenom)).setText(prenom);
     }
 }
