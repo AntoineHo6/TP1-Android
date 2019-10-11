@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.client;
+package ca.qc.bb.p55.georges.TP1;
 
 import org.junit.Test;
 

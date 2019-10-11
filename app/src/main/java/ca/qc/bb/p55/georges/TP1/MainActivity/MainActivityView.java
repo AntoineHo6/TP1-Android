@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.client.MainActivity;
+package ca.qc.bb.p55.georges.TP1.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

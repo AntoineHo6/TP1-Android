@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.client.MainActivity;
+package ca.qc.bb.p55.georges.TP1.MainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +13,9 @@ import android.view.MenuItem;
 import java.util.Collections;
 import java.util.Comparator;
 
-import ca.qc.bb.p55.georges.client.Activity2.Activity2;
-import ca.qc.bb.p55.georges.client.MyList;
-import ca.qc.bb.p55.georges.client.ClientAdapter;
+import ca.qc.bb.p55.georges.TP1.ActivityAddList.ActivityAddList;
+import ca.qc.bb.p55.georges.TP1.MyList;
+import ca.qc.bb.p55.georges.TP1.MyListAdapter;
 import ca.qc.bb.p55.georges.client.R;
 
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mainActivityModel = new MainActivityModel(this);
         mainActivityView = new MainActivityView(this);
 
-        mainActivityModel.getAdapter().setOnItemClickListener(new ClientAdapter.OnItemClickListener() {
+        mainActivityModel.getAdapter().setOnItemClickListener(new MyListAdapter.OnItemClickListener() {
             @Override
             public void onEditClick(int position) {
                 openActivity2Edit(position);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void openActivity2() {
-        Intent intent = new Intent(this, Activity2.class);
+        Intent intent = new Intent(this, ActivityAddList.class);
         startActivityForResult(intent, 1);
     }
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         String nom = mainActivityModel.getList().get(position).getNom();
         mainActivityModel.getList().remove(position);
 
-        Intent intent = new Intent(this, Activity2.class);
+        Intent intent = new Intent(this, ActivityAddList.class);
         intent.putExtra("nom", nom);
         startActivityForResult(intent, 1);
     }

@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.client.MainActivity;
+package ca.qc.bb.p55.georges.TP1.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import ca.qc.bb.p55.georges.client.MyList;
-import ca.qc.bb.p55.georges.client.ClientAdapter;
+import ca.qc.bb.p55.georges.TP1.MyList;
+import ca.qc.bb.p55.georges.TP1.MyListAdapter;
 import ca.qc.bb.p55.georges.client.R;
 
 public class MainActivityModel {
@@ -15,7 +15,7 @@ public class MainActivityModel {
     private RecyclerView.LayoutManager  layoutManager;
     private ArrayList<MyList> list;
     private RecyclerView recyclerView;
-    private ClientAdapter adapter;
+    private MyListAdapter adapter;
 
     public MainActivityModel(AppCompatActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -26,7 +26,7 @@ public class MainActivityModel {
         list.add(new MyList("List 1"));
         list.add(new MyList("List 2"));
 
-        adapter = new ClientAdapter(list);
+        adapter = new MyListAdapter(list);
 
         recyclerView = mainActivity.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -43,7 +43,7 @@ public class MainActivityModel {
         return recyclerView;
     }
 
-    public ClientAdapter getAdapter() {
+    public MyListAdapter getAdapter() {
         return adapter;
     }
 

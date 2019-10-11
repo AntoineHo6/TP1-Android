@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.client;
+package ca.qc.bb.p55.georges.TP1;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientViewHolder> {
+import ca.qc.bb.p55.georges.client.R;
+
+public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ClientViewHolder> {
     private ArrayList<MyList>   list;
     private OnItemClickListener listener;
 
@@ -44,7 +46,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         }
     }
 
-    public ClientAdapter(ArrayList<MyList> list) {
+    public MyListAdapter(ArrayList<MyList> list) {
         this.list = list;
     }
 

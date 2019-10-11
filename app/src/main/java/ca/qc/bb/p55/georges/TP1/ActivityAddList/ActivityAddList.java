@@ -1,29 +1,20 @@
-package ca.qc.bb.p55.georges.client.Activity2;
+package ca.qc.bb.p55.georges.TP1.ActivityAddList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.Image;
+
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import ca.qc.bb.p55.georges.client.R;
 
-public class Activity2 extends AppCompatActivity {
+public class ActivityAddList extends AppCompatActivity {
 
     public EditText etNom;
 
