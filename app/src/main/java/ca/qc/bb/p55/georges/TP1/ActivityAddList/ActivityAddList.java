@@ -21,9 +21,9 @@ public class ActivityAddList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_2);
+        setContentView(R.layout.activity_add_list);
 
-        etNom = findViewById(R.id.editTextNomFamille);
+        etNom = findViewById(R.id.editTextListName);
 
         if (getIntent().getExtras() != null) {
             presetValues();
@@ -41,7 +41,7 @@ public class ActivityAddList extends AppCompatActivity {
 
                 Intent intent = new Intent();
 
-                String nom = ((EditText) findViewById(R.id.editTextNomFamille)).getText().toString();
+                String nom = ((EditText) findViewById(R.id.editTextListName)).getText().toString();
                 // Uppercase first letter
                 nom = nom.substring(0, 1).toUpperCase() + nom.substring(1);
 
@@ -85,6 +85,6 @@ public class ActivityAddList extends AppCompatActivity {
 
     private void presetValues() {
         String nom = getIntent().getStringExtra("nom");
-        ((EditText) findViewById(R.id.editTextNomFamille)).setText(nom);
+        ((EditText) findViewById(R.id.editTextListName)).setText(nom);
     }
 }

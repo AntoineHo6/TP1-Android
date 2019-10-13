@@ -5,9 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
-import ca.qc.bb.p55.georges.TP1.MyList;
-import ca.qc.bb.p55.georges.TP1.MyListAdapter;
+import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.*;
 import ca.qc.bb.p55.georges.client.R;
 
 public class MainActivityModel {
@@ -49,5 +50,14 @@ public class MainActivityModel {
 
     public RecyclerView.LayoutManager getLayoutManager() {
         return layoutManager;
+    }
+
+    public void sortMyLists() {
+        Collections.sort(list, new Comparator<MyList>() {
+            @Override
+            public int compare(MyList o1, MyList o2) {
+                return o1.getNom().compareTo(o2.getNom());
+            }
+        });
     }
 }

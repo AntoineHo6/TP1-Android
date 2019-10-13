@@ -9,13 +9,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-
-import java.util.Collections;
-import java.util.Comparator;
-
 import ca.qc.bb.p55.georges.TP1.ActivityAddList.ActivityAddList;
-import ca.qc.bb.p55.georges.TP1.MyList;
-import ca.qc.bb.p55.georges.TP1.MyListAdapter;
+import ca.qc.bb.p55.georges.TP1.ActivityShowItems.ActivityShowItems;
+import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
+import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
 
 
@@ -32,10 +29,15 @@ public class MainActivity extends AppCompatActivity {
         mainActivityModel = new MainActivityModel(this);
         mainActivityView = new MainActivityView(this);
 
-        mainActivityModel.getAdapter().setOnItemClickListener(new MyListAdapter.OnItemClickListener() {
+        mainActivityModel.getAdapter().setOnItemClickListener(new IOnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                openActivityShowListItems(position);
+            }
+
             @Override
             public void onEditClick(int position) {
-                openActivity2Edit(position);
+                openActivityAddListEdit(position);
             }
         });
     }
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.addMenu) {
-            openActivity2();
+            openActivityAddList();
         }
 
         return super.onOptionsItemSelected(item);
@@ -70,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void openActivity2() {
+    private void openActivityAddList() {
         Intent intent = new Intent(this, ActivityAddList.class);
         startActivityForResult(intent, 1);
     }
 
-    private void openActivity2Edit(int position){
+    private void openActivityAddListEdit(int position){
         String nom = mainActivityModel.getList().get(position).getNom();
         mainActivityModel.getList().remove(position);
 
@@ -87,15 +89,17 @@ public class MainActivity extends AppCompatActivity {
     private void addClientToList(String nom) {
         mainActivityModel.getList().add(new MyList(nom));
 
-        // Sort la liste
-        Collections.sort(mainActivityModel.getList(), new Comparator<MyList>() {
-            @Override
-            public int compare(MyList o1, MyList o2) {
-                return o1.getNom().compareTo(o2.getNom());
-            }
-        });
+        mainActivityModel.sortMyLists();
 
         mainActivityModel.getAdapter().notifyItemInserted(mainActivityModel.getAdapter().getItemCount() - 1);
         mainActivityModel.getAdapter().notifyDataSetChanged();
+    }
+
+    private void openActivityShowListItems(int position) {
+        Intent intent = new Intent(this, ActivityShowItems.class);
+
+        MyList myList = mainActivityModel.getList().get(position);
+        intent.putExtra("myList", myList);
+        startActivity(intent);
     }
 }
