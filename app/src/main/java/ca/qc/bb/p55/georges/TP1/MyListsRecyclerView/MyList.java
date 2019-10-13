@@ -2,13 +2,14 @@ package ca.qc.bb.p55.georges.TP1.MyListsRecyclerView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
+
+import ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView.MyItem;
 
 @SuppressWarnings("serial")
 public class MyList implements Serializable {
 
     private String nom;
-    private List<String> listItems;
+    private ArrayList<MyItem> listItems;
 
     public MyList(String nom) {
         this.nom = nom;
@@ -20,7 +21,7 @@ public class MyList implements Serializable {
     }
 
 
-    public List<String> getlistItems() {
+    public ArrayList<MyItem> getlistItems() {
         return listItems;
     }
 }

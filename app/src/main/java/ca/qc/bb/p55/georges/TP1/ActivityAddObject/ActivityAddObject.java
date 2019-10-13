@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.TP1.ActivityAddList;
+package ca.qc.bb.p55.georges.TP1.ActivityAddObject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,14 +7,14 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import ca.qc.bb.p55.georges.client.R;
 
-public class ActivityAddList extends AppCompatActivity {
+public class ActivityAddObject extends AppCompatActivity {
 
     public EditText etNom;
 
@@ -55,17 +55,21 @@ public class ActivityAddList extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.undo_menu, menu);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);// set drawable icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.undoMenu) {
-            finish();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -73,7 +77,7 @@ public class ActivityAddList extends AppCompatActivity {
         boolean isEmpty = false;
 
         if (etNom.getText().toString().trim().isEmpty()) {
-            etNom.setError(getResources().getString(R.string.askEnterFirstName));
+            etNom.setError(getResources().getString(R.string.askEnterSomething));
             isEmpty = true;
         }
         else {
@@ -86,5 +90,14 @@ public class ActivityAddList extends AppCompatActivity {
     private void presetValues() {
         String nom = getIntent().getStringExtra("nom");
         ((EditText) findViewById(R.id.editTextListName)).setText(nom);
+
+        // modifie add object text
+        String type = getIntent().getStringExtra("objectType");
+        if (type.equals("list")) {
+            ((TextView) findViewById(R.id.txtViewListName)).setText(R.string.newList);
+        }
+        else {
+            ((TextView) findViewById(R.id.txtViewListName)).setText(R.string.newItem);
+        }
     }
 }

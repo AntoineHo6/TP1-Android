@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="ca.qc.bb.p55.georges.TP1.ActivityShowItems.ActivityShowItems"></activity>
-        <activity android:name="ca.qc.bb.p55.georges.TP1.ActivityAddList.ActivityAddList"></activity>
+        <activity android:name="ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject"></activity>
         <activity android:name="ca.qc.bb.p55.georges.TP1.MainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

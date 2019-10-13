@@ -1,14 +1,9 @@
 <resources>
-    <string name="app_name">Client</string>
-    <string name="confirmation">Confirmation</string>
-    <string name="askIfSure">Are you sure?</string>
+    <string name="app_name">TP1</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="askEnterFirstName">Please enter a first name</string>
-    <string name="askEnterLastName">Please enter a last name</string>
-    <string name="askChooseImage">Please choose an image</string>
-    <string name="lastName">List name</string>
-    <string name="ProfilePic">Profile Picture</string>
+    <string name="newItem">New item name</string>
     <string name="submit">Submit</string>
-    <string name="firstName">First Name</string>
+    <string name="newList">New list name</string>
+    <string name="askEnterSomething">Please enter something</string>
 </resources>

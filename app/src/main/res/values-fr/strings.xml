@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Client</string>
-    <string name="confirmation">Confirmation</string>
-    <string name="askIfSure">Êtes-vous sûre?</string>
+    <string name="app_name">TP1</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
-    <string name="askEnterFirstName">Vous devez saisir un nom</string>
-    <string name="askEnterLastName">Vous devez saisir un prenom</string>
-    <string name="askChooseImage">Il faut choisir une image!!!!!!!!!!!! AHHHHHHH!!!</string>
-    <string name="lastName">Nom de la liste</string>
-    <string name="ProfilePic">Photo de profil</string>
+    <string name="newItem">Nom du nouveau item</string>
     <string name="submit">Soumettre</string>
-    <string name="firstName">Prenom</string>
+    <string name="newList">Nom de la nouvelle liste</string>
+    <string name="askEnterSomething">Ne laissez le pas vide!</string>
 </resources>

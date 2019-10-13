@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import ca.qc.bb.p55.georges.TP1.ActivityAddList.ActivityAddList;
+import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
 import ca.qc.bb.p55.georges.TP1.ActivityShowItems.ActivityShowItems;
 import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK) {
                 String nom = data.getStringExtra("nom");
 
-                addClientToList(nom);
+                addList(nom);
             }
         }
     }
@@ -70,10 +70,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
     private void openActivityAddList() {
-        Intent intent = new Intent(this, ActivityAddList.class);
+        Intent intent = new Intent(this, ActivityAddObject.class);
+        intent.putExtra("objectType", "list");
         startActivityForResult(intent, 1);
     }
 
@@ -81,12 +80,13 @@ public class MainActivity extends AppCompatActivity {
         String nom = mainActivityModel.getList().get(position).getNom();
         mainActivityModel.getList().remove(position);
 
-        Intent intent = new Intent(this, ActivityAddList.class);
+        Intent intent = new Intent(this, ActivityAddObject.class);
         intent.putExtra("nom", nom);
+        intent.putExtra("objectType", "list");
         startActivityForResult(intent, 1);
     }
 
-    private void addClientToList(String nom) {
+    private void addList(String nom) {
         mainActivityModel.getList().add(new MyList(nom));
 
         mainActivityModel.sortMyLists();

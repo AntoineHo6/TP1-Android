@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/txtViewListName"
-        android:layout_width="150dp"
-        android:layout_height="29dp"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
         android:text="TextView"
-        android:textSize="25dp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
@@ -20,10 +20,14 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="411dp"
-        android:layout_height="682dp"
+        android:id="@+id/recyclerView"
+        android:layout_width="406dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtViewListName" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
