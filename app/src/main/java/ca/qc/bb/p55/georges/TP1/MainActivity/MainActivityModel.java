@@ -12,7 +12,7 @@ import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.*;
 import ca.qc.bb.p55.georges.client.R;
 
 public class MainActivityModel {
-    private AppCompatActivity mainActivity;
+    private AppCompatActivity mainActivity; // may be deprecated
     private RecyclerView.LayoutManager  layoutManager;
     private ArrayList<MyList> list;
     private RecyclerView recyclerView;

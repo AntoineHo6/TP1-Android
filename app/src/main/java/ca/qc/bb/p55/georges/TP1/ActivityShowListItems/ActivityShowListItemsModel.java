@@ -1,4 +1,4 @@
-package ca.qc.bb.p55.georges.TP1.ActivityShowItems;
+package ca.qc.bb.p55.georges.TP1.ActivityShowListItems;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,14 +11,14 @@ import ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView.MyItemAdapter;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
 
-public class ActivityShowItemsModel {
-    private AppCompatActivity activityShowItems;
+public class ActivityShowListItemsModel {
+    private AppCompatActivity activityShowItems;    // may be deprecated
     private RecyclerView.LayoutManager  layoutManager;
     private MyItemAdapter adapter;
     private MyList myList;
     private RecyclerView recyclerView;
 
-    public ActivityShowItemsModel(AppCompatActivity activityShowItems, MyList myList) {
+    public ActivityShowListItemsModel(AppCompatActivity activityShowItems, MyList myList) {
         this.activityShowItems = activityShowItems;
 
         layoutManager = new LinearLayoutManager(activityShowItems);

@@ -1,8 +1,7 @@
-package ca.qc.bb.p55.georges.TP1.ActivityShowItems;
+package ca.qc.bb.p55.georges.TP1.ActivityShowListItems;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,21 +9,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 
 import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
 import ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView.MyItem;
-import ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView.MyItemAdapter;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
 
-public class ActivityShowItems extends AppCompatActivity {
+public class ActivityShowListItems extends AppCompatActivity {
 
+    // TODO: move this into model?
     private MyList myList;
 
-    private ActivityShowItemsModel activityShowItemsModel;
+    private ActivityShowListItemsModel activityShowListItemsModel;
+    private ActivityShowListItemsView activityShowListItemsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +32,8 @@ public class ActivityShowItems extends AppCompatActivity {
         myList = (MyList) getIntent().getSerializableExtra("myList");
         ((TextView) findViewById(R.id.txtViewListName)).setText(myList.getNom());
 
-        activityShowItemsModel = new ActivityShowItemsModel(this, myList);
+        activityShowListItemsModel = new ActivityShowListItemsModel(this, myList);
+        activityShowListItemsView = new ActivityShowListItemsView(this);
     }
 
     @Override
@@ -91,8 +89,7 @@ public class ActivityShowItems extends AppCompatActivity {
     private void addItemToList(String content) {
         myList.getlistItems().add(new MyItem(content));
 
-        activityShowItemsModel.getAdapter().notifyItemInserted(activityShowItemsModel.getAdapter().getItemCount() - 1);
-        activityShowItemsModel.getAdapter().notifyDataSetChanged();
+        activityShowListItemsView.updateItemsInterface(activityShowListItemsModel.getAdapter());
     }
 
 }

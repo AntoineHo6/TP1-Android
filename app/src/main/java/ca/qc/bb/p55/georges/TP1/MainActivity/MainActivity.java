@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
-import ca.qc.bb.p55.georges.TP1.ActivityShowItems.ActivityShowItems;
+import ca.qc.bb.p55.georges.TP1.ActivityShowListItems.ActivityShowListItems;
 import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
@@ -83,15 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void addList(String nom) {
         mainActivityModel.getList().add(new MyList(nom));
-
         mainActivityModel.sortMyLists();
 
-        mainActivityModel.getAdapter().notifyItemInserted(mainActivityModel.getAdapter().getItemCount() - 1);
-        mainActivityModel.getAdapter().notifyDataSetChanged();
+        mainActivityView.updateListsInterface(mainActivityModel.getAdapter());
     }
 
     private void openActivityShowListItems(int position) {
-        Intent intent = new Intent(this, ActivityShowItems.class);
+        Intent intent = new Intent(this, ActivityShowListItems.class);
 
         mainActivityModel.setIndexCurrentViewedSubList(position);
 
@@ -109,4 +106,7 @@ public class MainActivity extends AppCompatActivity {
           3. Check for returned strings not only null but also check if isEmpty() and trim() them.
           4. Make the mainActivity's view actually do something
           5. Add view to ActivityShowItems
+          6. Remove auto-caps for "nom"
+          7. Swipe to delete implementation
+          8. save on sql thingy
  */
