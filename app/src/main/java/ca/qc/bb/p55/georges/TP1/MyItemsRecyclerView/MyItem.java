@@ -1,7 +1,9 @@
 package ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView;
 
 
-public class MyItem {
+import java.io.Serializable;
+
+public class MyItem implements Serializable {
 
     private String info;
 

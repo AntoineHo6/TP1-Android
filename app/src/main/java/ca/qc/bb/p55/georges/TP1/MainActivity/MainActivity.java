@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 openActivityShowListItems(position);
             }
 
-            @Override
-            public void onEditClick(int position) {
-                openActivityAddListEdit(position);
-            }
         });
     }
 
@@ -47,9 +44,17 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
-                String nom = data.getStringExtra("nom");
 
-                addList(nom);
+                String nom = data.getStringExtra("nom");
+                if (nom != null) {
+                    addList(nom);
+                }
+
+                MyList myNewList = (MyList) data.getSerializableExtra("myList");
+                if (myNewList != null) {
+                    int listIndex = mainActivityModel.getIndexCurrentViewedSubList();
+                    mainActivityModel.getList().set(listIndex, myNewList);
+                }
             }
         }
     }
@@ -76,16 +81,6 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 1);
     }
 
-    private void openActivityAddListEdit(int position){
-        String nom = mainActivityModel.getList().get(position).getNom();
-        mainActivityModel.getList().remove(position);
-
-        Intent intent = new Intent(this, ActivityAddObject.class);
-        intent.putExtra("nom", nom);
-        intent.putExtra("objectType", "list");
-        startActivityForResult(intent, 1);
-    }
-
     private void addList(String nom) {
         mainActivityModel.getList().add(new MyList(nom));
 
@@ -98,8 +93,20 @@ public class MainActivity extends AppCompatActivity {
     private void openActivityShowListItems(int position) {
         Intent intent = new Intent(this, ActivityShowItems.class);
 
+        mainActivityModel.setIndexCurrentViewedSubList(position);
+
         MyList myList = mainActivityModel.getList().get(position);
         intent.putExtra("myList", myList);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 }
+
+
+
+/*
+    TODO: 1. Rename ActivityAddObject to ActivityAddList
+          2. Split ActivityAddList to MVC style
+          3. Check for returned strings not only null but also check if isEmpty() and trim() them.
+          4. Make the mainActivity's view actually do something
+          5. Add view to ActivityShowItems
+ */

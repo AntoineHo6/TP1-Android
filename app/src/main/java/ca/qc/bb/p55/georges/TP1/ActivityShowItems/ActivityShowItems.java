@@ -53,8 +53,15 @@ public class ActivityShowItems extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                // TODO: SENDD MYLIST INFOO BACKKKK TO MAIN ACTIVITY OMGGG!!
-                finish();
+                if (myList.getlistItems().size() == 0) {
+                    finish();
+                }
+                else {
+                    Intent intent = new Intent();
+                    intent.putExtra("myList", myList);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
                 break;
             case R.id.addMenu:
                 openActivityAddItem();

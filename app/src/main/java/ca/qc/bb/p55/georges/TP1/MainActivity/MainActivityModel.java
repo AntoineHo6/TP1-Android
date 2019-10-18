@@ -17,6 +17,7 @@ public class MainActivityModel {
     private ArrayList<MyList> list;
     private RecyclerView recyclerView;
     private MyListAdapter adapter;
+    private int indexCurrentViewedSubList;
 
     public MainActivityModel(AppCompatActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -50,6 +51,14 @@ public class MainActivityModel {
 
     public RecyclerView.LayoutManager getLayoutManager() {
         return layoutManager;
+    }
+
+    public int getIndexCurrentViewedSubList() {
+        return indexCurrentViewedSubList;
+    }
+
+    public void setIndexCurrentViewedSubList(int IndexCurrentViewedSubList) {
+        this.indexCurrentViewedSubList = IndexCurrentViewedSubList;
     }
 
     public void sortMyLists() {
