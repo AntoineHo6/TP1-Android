@@ -1,5 +1,9 @@
 package ca.qc.bb.p55.georges.TP1.MainActivity;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,38 +12,49 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import ca.qc.bb.p55.georges.TP1.MyListContract;
+import ca.qc.bb.p55.georges.TP1.MyListDBHelper;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.*;
 import ca.qc.bb.p55.georges.client.R;
 
 public class MainActivityModel {
     private AppCompatActivity mainActivity; // may be deprecated
     private RecyclerView.LayoutManager  layoutManager;
-    private ArrayList<MyList> list;
+//    private ArrayList<MyList> list;
     private RecyclerView recyclerView;
     private MyListAdapter adapter;
     private int indexCurrentViewedSubList;
+    private SQLiteDatabase dataBase;
 
     public MainActivityModel(AppCompatActivity mainActivity) {
         this.mainActivity = mainActivity;
 
         layoutManager = new LinearLayoutManager(mainActivity);
 
-        list = new ArrayList<>();
-        list.add(new MyList("List 1"));
-        list.add(new MyList("List 2"));
+//        list = new ArrayList<>();
+//        list.add(new MyList("List 1"));
+//        list.add(new MyList("List 2"));
 
-        adapter = new MyListAdapter(list);
+        MyListDBHelper dbHelper = new MyListDBHelper(mainActivity);
+        dataBase = dbHelper.getWritableDatabase();
+
+        adapter = new MyListAdapter(mainActivity, getAllLists());
 
         recyclerView = mainActivity.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        this.mainActivity = mainActivity;
+
+
+
     }
 
-    public ArrayList<MyList> getList() {
-        return list;
-    }
+//    public ArrayList<MyList> getList() {
+//        return list;
+//    }
 
     public RecyclerView getRecyclerView() {
         return recyclerView;
@@ -61,12 +76,34 @@ public class MainActivityModel {
         this.indexCurrentViewedSubList = IndexCurrentViewedSubList;
     }
 
-    public void sortMyLists() {
-        Collections.sort(list, new Comparator<MyList>() {
-            @Override
-            public int compare(MyList o1, MyList o2) {
-                return o1.getNom().compareTo(o2.getNom());
-            }
-        });
+//    public void sortMyLists() {
+//        Collections.sort(list, new Comparator<MyList>() {
+//            @Override
+//            public int compare(MyList o1, MyList o2) {
+//                return o1.getNom().compareTo(o2.getNom());
+//            }
+//        });
+//    }
+
+    public void addListToDB(String name) {
+            ContentValues cv = new ContentValues();
+            cv.put(MyListContract.MyListEntry.COLUMN_NAME, name);
+            //cv.put(MyListContract.MyListEntry.COLUMN_ITEMS, items);
+
+            dataBase.insert(MyListContract.MyListEntry.TABLE_NAME, null, cv);
+            adapter.swapCursor(getAllLists());
+
+    }
+
+    private Cursor getAllLists() {
+        return dataBase.query(
+                MyListContract.MyListEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
     }
 }

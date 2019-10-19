@@ -1,5 +1,7 @@
 package ca.qc.bb.p55.georges.TP1.MyListsRecyclerView;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
+import ca.qc.bb.p55.georges.TP1.MyListContract;
 import ca.qc.bb.p55.georges.client.R;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListViewHolder> {
-    private ArrayList<MyList>   list;
     private IOnItemClickListener listener;
 
-    public MyListAdapter(ArrayList<MyList> list) {
-        this.list = list;
+    private Context context;
+    private Cursor cursor;
+
+    public MyListAdapter(Context context, Cursor cursor) {
+        this.context = context;
+        this.cursor = cursor;
     }
 
     public void setOnItemClickListener(IOnItemClickListener listener) {
@@ -34,12 +40,34 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyListViewHolder holder, int position) {
-        MyList myList = list.get(position);
-        holder.tvNom.setText(myList.getNom());
+//        MyList myList = list.get(position);
+//        holder.tvNom.setText(myList.getNom());
+
+        if (!cursor.moveToPosition(position)) {
+            return;
+        }
+        else {
+            String name = cursor.getString(cursor.getColumnIndex(MyListContract.MyListEntry.COLUMN_NAME));
+            String items = cursor.getString(cursor.getColumnIndex(MyListContract.MyListEntry.COLUMN_ITEMS));
+
+            holder.tvNom.setText(name);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return cursor.getCount();
+    }
+
+    public void swapCursor(Cursor newCursor) {
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        cursor = newCursor;
+
+        if (newCursor != null) {
+            notifyDataSetChanged();
+        }
     }
 }

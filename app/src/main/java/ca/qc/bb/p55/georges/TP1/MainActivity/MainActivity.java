@@ -3,7 +3,10 @@ package ca.qc.bb.p55.georges.TP1.MainActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +15,8 @@ import android.view.MenuItem;
 import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
 import ca.qc.bb.p55.georges.TP1.ActivityShowListItems.ActivityShowListItems;
 import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
+import ca.qc.bb.p55.georges.TP1.MyListContract;
+import ca.qc.bb.p55.georges.TP1.MyListDBHelper;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
 
@@ -52,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 MyList myNewList = (MyList) data.getSerializableExtra("myList");
                 if (myNewList != null) {
                     int listIndex = mainActivityModel.getIndexCurrentViewedSubList();
-                    mainActivityModel.getList().set(listIndex, myNewList);
+//                    mainActivityModel.getList().set(listIndex, myNewList);
+//                    mainActivityModel.addItemsToDB();
+                    // TODO: it returns strings
                 }
             }
         }
@@ -81,8 +88,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addList(String nom) {
-        mainActivityModel.getList().add(new MyList(nom));
-        mainActivityModel.sortMyLists();
+//        mainActivityModel.getList().add(new MyList(nom));
+//        mainActivityModel.sortMyLists();
+
+        mainActivityModel.addListToDB(nom);
 
         mainActivityView.updateListsInterface(mainActivityModel.getAdapter());
     }
@@ -92,10 +101,13 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivityModel.setIndexCurrentViewedSubList(position);
 
-        MyList myList = mainActivityModel.getList().get(position);
-        intent.putExtra("myList", myList);
+//        MyList myList = mainActivityModel.getList().get(position);
+//        intent.putExtra("myList", myList);
         startActivityForResult(intent, 1);
     }
+
+
+
 }
 
 
@@ -109,4 +121,5 @@ public class MainActivity extends AppCompatActivity {
           6. Remove auto-caps for "nom"
           7. Swipe to delete implementation
           8. save on sql thingy
+          9. use stringbuilder to save items
  */
