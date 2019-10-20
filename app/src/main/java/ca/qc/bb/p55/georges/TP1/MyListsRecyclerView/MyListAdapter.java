@@ -40,9 +40,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyListViewHolder holder, int position) {
-//        MyList myList = list.get(position);
-//        holder.tvNom.setText(myList.getNom());
-
         if (!cursor.moveToPosition(position)) {
             return;
         }

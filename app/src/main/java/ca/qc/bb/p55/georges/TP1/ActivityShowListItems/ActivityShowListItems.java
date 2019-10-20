@@ -9,8 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
+import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
 import ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView.MyItem;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
@@ -36,6 +39,18 @@ public class ActivityShowListItems extends AppCompatActivity {
 
         activityShowListItemsModel = new ActivityShowListItemsModel(this, listName, items);
         activityShowListItemsView = new ActivityShowListItemsView(this);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                removeItem(viewHolder.getAdapterPosition());
+            }
+        }).attachToRecyclerView(activityShowListItemsModel.getRecyclerView());
     }
 
     @Override
@@ -94,6 +109,10 @@ public class ActivityShowListItems extends AppCompatActivity {
     private void addItemToList(String content) {
         activityShowListItemsModel.addItemToAdapter(content);
         activityShowListItemsView.updateItemsInterface(activityShowListItemsModel.getAdapter());
+    }
+
+    private void removeItem(int position) {
+        activityShowListItemsModel.removeItem(position);
     }
 
 }

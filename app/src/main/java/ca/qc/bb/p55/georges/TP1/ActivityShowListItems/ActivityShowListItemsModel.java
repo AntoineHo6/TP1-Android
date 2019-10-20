@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView.MyItemAdapter;
@@ -47,6 +46,10 @@ public class ActivityShowListItemsModel {
         return listName;
     }
 
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
     private ArrayList<String> getDetokenizedItems() {
         if (tokenizedItems == null) {
             return new ArrayList<>();
@@ -73,5 +76,10 @@ public class ActivityShowListItemsModel {
 
     public void addItemToAdapter(String content) {
         adapter.getList().add(content);
+    }
+
+    public void removeItem(int position) {
+        adapter.getList().remove(position);
+        adapter.notifyDataSetChanged();
     }
 }
