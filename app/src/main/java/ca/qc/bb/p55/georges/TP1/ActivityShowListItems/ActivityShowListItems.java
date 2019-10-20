@@ -18,7 +18,7 @@ import ca.qc.bb.p55.georges.client.R;
 public class ActivityShowListItems extends AppCompatActivity {
 
     // TODO: move this into model?
-    private MyList myList;
+//    private MyList myList;
 
     private ActivityShowListItemsModel activityShowListItemsModel;
     private ActivityShowListItemsView activityShowListItemsView;
@@ -29,10 +29,12 @@ public class ActivityShowListItems extends AppCompatActivity {
         setContentView(R.layout.activity_view_myitems);
 
         // be in the view
-        myList = (MyList) getIntent().getSerializableExtra("myList");
-        ((TextView) findViewById(R.id.txtViewListName)).setText(myList.getNom());
+        String listName = getIntent().getStringExtra("listName");
+        ((TextView) findViewById(R.id.txtViewListName)).setText(listName);
 
-        activityShowListItemsModel = new ActivityShowListItemsModel(this, myList);
+        String items = getIntent().getStringExtra("listItems");
+
+        activityShowListItemsModel = new ActivityShowListItemsModel(this, listName, items);
         activityShowListItemsView = new ActivityShowListItemsView(this);
     }
 
@@ -51,12 +53,15 @@ public class ActivityShowListItems extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (myList.getlistItems().size() == 0) {
+                if (activityShowListItemsModel.getAdapter().getList().isEmpty()) {
                     finish();
                 }
                 else {
                     Intent intent = new Intent();
-                    intent.putExtra("myList", myList);
+                    activityShowListItemsModel.updateTokenizedItems();
+                    String tokenizedItems = activityShowListItemsModel.getTokenizedItems();
+                    intent.putExtra("listName", activityShowListItemsModel.getListName());
+                    intent.putExtra("listItems", tokenizedItems);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -87,8 +92,7 @@ public class ActivityShowListItems extends AppCompatActivity {
     }
 
     private void addItemToList(String content) {
-        myList.getlistItems().add(new MyItem(content));
-
+        activityShowListItemsModel.addItemToAdapter(content);
         activityShowListItemsView.updateItemsInterface(activityShowListItemsModel.getAdapter());
     }
 

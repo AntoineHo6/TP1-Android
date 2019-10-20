@@ -23,9 +23,11 @@ public class MyListViewHolder extends RecyclerView.ViewHolder {
                 // vérifier que le listener n'est pas null
                 if (listener != null) {
                     int position = getAdapterPosition();
+                    String nom = (String) tvNom.getText();
+
                     // la position est valide?
                     if (position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(position);
+                        listener.onItemClick(position, nom);
                     }
                 }
             }

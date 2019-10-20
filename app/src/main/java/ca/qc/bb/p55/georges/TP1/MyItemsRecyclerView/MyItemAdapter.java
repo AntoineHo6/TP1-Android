@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import ca.qc.bb.p55.georges.client.R;
 
 public class MyItemAdapter extends RecyclerView.Adapter<MyItemViewHolder> {
-    private ArrayList<MyItem>   list;
+    private ArrayList<String> list;
 
-    public MyItemAdapter(ArrayList<MyItem> list) {
+    public MyItemAdapter(ArrayList<String> list) {
         this.list = list;
     }
 
@@ -28,12 +28,16 @@ public class MyItemAdapter extends RecyclerView.Adapter<MyItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyItemViewHolder holder, int position) {
-        MyItem myItem = list.get(position);
-        holder.tvNom.setText(myItem.getInfo());
+        String myItem = list.get(position);
+        holder.tvNom.setText(myItem);
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public ArrayList<String> getList() {
+        return list;
     }
 }

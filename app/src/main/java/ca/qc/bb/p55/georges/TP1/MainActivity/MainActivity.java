@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivityModel.getAdapter().setOnItemClickListener(new IOnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
-                openActivityShowListItems(position);
+            public void onItemClick(int position, String nom) {
+                openActivityShowListItems(position, nom);
             }
 
         });
@@ -54,12 +55,10 @@ public class MainActivity extends AppCompatActivity {
                     addList(nom);
                 }
 
-                MyList myNewList = (MyList) data.getSerializableExtra("myList");
-                if (myNewList != null) {
-                    int listIndex = mainActivityModel.getIndexCurrentViewedSubList();
-//                    mainActivityModel.getList().set(listIndex, myNewList);
-//                    mainActivityModel.addItemsToDB();
-                    // TODO: it returns strings
+                String listName = data.getStringExtra("listName");
+                String listItems = data.getStringExtra("listItems");
+                if (listItems != null || !listItems.trim().isEmpty()) {
+                    mainActivityModel.updateListsItems(listName, listItems);
                 }
             }
         }
@@ -96,13 +95,14 @@ public class MainActivity extends AppCompatActivity {
         mainActivityView.updateListsInterface(mainActivityModel.getAdapter());
     }
 
-    private void openActivityShowListItems(int position) {
+    private void openActivityShowListItems(int position, String nom) {
         Intent intent = new Intent(this, ActivityShowListItems.class);
 
-        mainActivityModel.setIndexCurrentViewedSubList(position);
+        String listItems = mainActivityModel.getListItems(nom);
 
-//        MyList myList = mainActivityModel.getList().get(position);
-//        intent.putExtra("myList", myList);
+        intent.putExtra("listName", nom);
+        intent.putExtra("listItems", listItems);
+
         startActivityForResult(intent, 1);
     }
 
@@ -122,4 +122,6 @@ public class MainActivity extends AppCompatActivity {
           7. Swipe to delete implementation
           8. save on sql thingy
           9. use stringbuilder to save items
+          10. add hints on textViews
+          11. find a way to know which activity ended in mainActivity as to not confucious both
  */

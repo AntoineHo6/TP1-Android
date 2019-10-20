@@ -16,6 +16,7 @@ import ca.qc.bb.p55.georges.TP1.MyListContract;
 import ca.qc.bb.p55.georges.TP1.MyListDBHelper;
 import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.*;
 import ca.qc.bb.p55.georges.client.R;
+import ca.qc.bb.p55.georges.TP1.MyListContract.*;
 
 public class MainActivityModel {
     private AppCompatActivity mainActivity; // may be deprecated
@@ -23,7 +24,6 @@ public class MainActivityModel {
 //    private ArrayList<MyList> list;
     private RecyclerView recyclerView;
     private MyListAdapter adapter;
-    private int indexCurrentViewedSubList;
     private SQLiteDatabase dataBase;
 
     public MainActivityModel(AppCompatActivity mainActivity) {
@@ -68,14 +68,6 @@ public class MainActivityModel {
         return layoutManager;
     }
 
-    public int getIndexCurrentViewedSubList() {
-        return indexCurrentViewedSubList;
-    }
-
-    public void setIndexCurrentViewedSubList(int IndexCurrentViewedSubList) {
-        this.indexCurrentViewedSubList = IndexCurrentViewedSubList;
-    }
-
 //    public void sortMyLists() {
 //        Collections.sort(list, new Comparator<MyList>() {
 //            @Override
@@ -105,5 +97,24 @@ public class MainActivityModel {
                 null,
                 null
         );
+    }
+
+    public String getListItems(String listName) {
+        Cursor c = dataBase.rawQuery("SELECT items FROM " + MyListContract.MyListEntry.TABLE_NAME + " WHERE name=" + "'" + listName + "'", null);
+        c.moveToFirst();
+
+        String listItems = c.getString(0);
+
+        c.close();
+
+        return listItems;
+    }
+
+    public void updateListsItems(String listName, String listItems) {
+        ContentValues cv = new ContentValues();
+        cv.put(MyListEntry.COLUMN_NAME, listName);
+        cv.put(MyListEntry.COLUMN_ITEMS, listItems);
+
+        dataBase.update(MyListEntry.TABLE_NAME, cv, "name="+"'" + listName + "'", null);
     }
 }
