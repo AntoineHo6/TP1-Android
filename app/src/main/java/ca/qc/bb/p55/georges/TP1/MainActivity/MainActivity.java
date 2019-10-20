@@ -5,12 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,9 +14,6 @@ import android.view.MenuItem;
 import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
 import ca.qc.bb.p55.georges.TP1.ActivityShowListItems.ActivityShowListItems;
 import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
-import ca.qc.bb.p55.georges.TP1.MyListContract;
-import ca.qc.bb.p55.georges.TP1.MyListDBHelper;
-import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
 
 
@@ -129,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 /*
-    TODO: 1. Rename ActivityAddObject to ActivityAddList
+    TODO:
           2. Split ActivityAddList to MVC style
           3. Check for returned strings not only null but also check if isEmpty() and trim() them.
           4. Make the mainActivity's view actually do something

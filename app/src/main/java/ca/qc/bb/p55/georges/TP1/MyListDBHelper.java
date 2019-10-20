@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import ca.qc.bb.p55.georges.TP1.MyListContract.*;
-import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 
 import androidx.annotation.Nullable;
 

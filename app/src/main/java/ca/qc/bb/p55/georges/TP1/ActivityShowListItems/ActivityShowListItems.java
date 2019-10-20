@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
-import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
-import ca.qc.bb.p55.georges.TP1.MyItemsRecyclerView.MyItem;
-import ca.qc.bb.p55.georges.TP1.MyListsRecyclerView.MyList;
 import ca.qc.bb.p55.georges.client.R;
 
 public class ActivityShowListItems extends AppCompatActivity {
@@ -114,6 +111,7 @@ public class ActivityShowListItems extends AppCompatActivity {
     private void removeItem(int position) {
         activityShowListItemsModel.removeItem(position);
     }
+
 
 }
 
