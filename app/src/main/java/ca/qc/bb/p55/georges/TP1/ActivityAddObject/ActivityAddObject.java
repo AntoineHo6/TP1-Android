@@ -40,15 +40,13 @@ public class ActivityAddObject extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean isEmpty = activityAddObjectModel.checkForEmpty();
-                if (isEmpty) {
-                    return;
+                if (!isEmpty) {
+                    Intent intent = new Intent();
+                    String nom = ((EditText) findViewById(R.id.editTextListName)).getText().toString();
+                    intent.putExtra("nom", nom);
+                    setResult(RESULT_OK, intent);
+                    finish();
                 }
-
-                Intent intent = new Intent();
-                String nom = ((EditText) findViewById(R.id.editTextListName)).getText().toString();
-                intent.putExtra("nom", nom);
-                setResult(RESULT_OK, intent);
-                finish();
             }
         });
     }

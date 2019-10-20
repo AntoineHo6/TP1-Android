@@ -1,7 +1,6 @@
 package ca.qc.bb.p55.georges.TP1.ActivityAddObject;
 
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 

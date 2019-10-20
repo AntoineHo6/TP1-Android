@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 import ca.qc.bb.p55.georges.TP1.IOnItemClickListener;
 import ca.qc.bb.p55.georges.TP1.MyListContract;
 import ca.qc.bb.p55.georges.client.R;

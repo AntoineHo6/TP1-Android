@@ -30,12 +30,12 @@ public class ActivityShowListItems extends AppCompatActivity {
 
         // be in the view
         String listName = getIntent().getStringExtra("listName");
-        ((TextView) findViewById(R.id.txtViewListName)).setText(listName);
-
         String items = getIntent().getStringExtra("listItems");
 
         activityShowListItemsModel = new ActivityShowListItemsModel(this, listName, items);
         activityShowListItemsView = new ActivityShowListItemsView(this);
+
+        activityShowListItemsView.changeListName(listName);
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override

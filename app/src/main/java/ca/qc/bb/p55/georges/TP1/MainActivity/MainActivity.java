@@ -94,11 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addList(String nom) {
-//        mainActivityModel.getList().add(new MyList(nom));
-//        mainActivityModel.sortMyLists();
-
         mainActivityModel.addListToDB(nom);
-
         mainActivityView.updateListsInterface(mainActivityModel.getAdapter());
     }
 
@@ -123,14 +119,6 @@ public class MainActivity extends AppCompatActivity {
 
 /*
     TODO:
-          2. Split ActivityAddList to MVC style
-          3. Check for returned strings not only null but also check if isEmpty() and trim() them.
-          4. Make the mainActivity's view actually do something
-          5. Add view to ActivityShowItems
-          6. Remove auto-caps for "nom"
-          7. Swipe to delete implementation
-          8. save on sql thingy
-          9. use stringbuilder to save items
           10. add hints on textViews
           11. find a way to know which activity ended in mainActivity as to not confucious both
           12. instead of identifying a list by its name, do it by its id

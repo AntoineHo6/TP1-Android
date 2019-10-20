@@ -17,7 +17,6 @@ import ca.qc.bb.p55.georges.TP1.MyListContract.*;
 public class MainActivityModel {
     private AppCompatActivity mainActivity; // may be deprecated
     private RecyclerView.LayoutManager  layoutManager;
-//    private ArrayList<MyList> list;
     private RecyclerView recyclerView;
     private MyListAdapter adapter;
     private SQLiteDatabase dataBase;
@@ -26,10 +25,6 @@ public class MainActivityModel {
         this.mainActivity = mainActivity;
 
         layoutManager = new LinearLayoutManager(mainActivity);
-
-//        list = new ArrayList<>();
-//        list.add(new MyList("List 1"));
-//        list.add(new MyList("List 2"));
 
         MyListDBHelper dbHelper = new MyListDBHelper(mainActivity);
         dataBase = dbHelper.getWritableDatabase();
@@ -63,15 +58,6 @@ public class MainActivityModel {
     public RecyclerView.LayoutManager getLayoutManager() {
         return layoutManager;
     }
-
-//    public void sortMyLists() {
-//        Collections.sort(list, new Comparator<MyList>() {
-//            @Override
-//            public int compare(MyList o1, MyList o2) {
-//                return o1.getNom().compareTo(o2.getNom());
-//            }
-//        });
-//    }
 
     public void addListToDB(String name) {
             ContentValues cv = new ContentValues();
