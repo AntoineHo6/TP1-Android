@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -116,5 +118,11 @@ public class MainActivityModel {
         cv.put(MyListEntry.COLUMN_ITEMS, listItems);
 
         dataBase.update(MyListEntry.TABLE_NAME, cv, "name="+"'" + listName + "'", null);
+    }
+
+    public void removeItem(long id) {
+        dataBase.delete(MyListEntry.TABLE_NAME,
+                MyListEntry._ID + "=" + id, null);
+        adapter.swapCursor(getAllLists());
     }
 }

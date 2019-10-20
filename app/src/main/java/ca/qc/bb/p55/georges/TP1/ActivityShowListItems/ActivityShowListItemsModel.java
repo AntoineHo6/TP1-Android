@@ -48,12 +48,12 @@ public class ActivityShowListItemsModel {
     }
 
     private ArrayList<String> getDetokenizedItems() {
-        ArrayList<String> detokenizedItems = new ArrayList<>();
-        String[] parts = tokenizedItems.split(";");
-
-        if (tokenizedItems == null || tokenizedItems.isEmpty()) {
+        if (tokenizedItems == null) {
             return new ArrayList<>();
         }
+
+        ArrayList<String> detokenizedItems = new ArrayList<>();
+        String[] parts = tokenizedItems.split(";");
 
         for (int i = 0; i < parts.length ; i++) {
             detokenizedItems.add(parts[i]);

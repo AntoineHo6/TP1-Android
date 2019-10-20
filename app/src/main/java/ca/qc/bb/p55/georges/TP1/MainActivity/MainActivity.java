@@ -2,6 +2,8 @@ package ca.qc.bb.p55.georges.TP1.MainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -35,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
         mainActivityModel = new MainActivityModel(this);
         mainActivityView = new MainActivityView(this);
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                removeItem((long) viewHolder.itemView.getTag());
+            }
+        }).attachToRecyclerView(mainActivityModel.getRecyclerView());
+
         mainActivityModel.getAdapter().setOnItemClickListener(new IOnItemClickListener() {
             @Override
             public void onItemClick(int position, String nom) {
@@ -57,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String listName = data.getStringExtra("listName");
                 String listItems = data.getStringExtra("listItems");
-                if (listItems != null || !listItems.trim().isEmpty()) {
+                if (listItems != null && !listItems.isEmpty()) {
                     mainActivityModel.updateListsItems(listName, listItems);
                 }
             }
@@ -106,7 +120,9 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 1);
     }
 
-
+    private void removeItem(long id) {
+        mainActivityModel.removeItem(id);
+    }
 
 }
 
@@ -124,4 +140,5 @@ public class MainActivity extends AppCompatActivity {
           9. use stringbuilder to save items
           10. add hints on textViews
           11. find a way to know which activity ended in mainActivity as to not confucious both
+          12. instead of identifying a list by its name, do it by its id
  */

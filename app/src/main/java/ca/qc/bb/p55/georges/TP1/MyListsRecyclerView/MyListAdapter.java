@@ -48,9 +48,10 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListViewHolder> {
         }
         else {
             String name = cursor.getString(cursor.getColumnIndex(MyListContract.MyListEntry.COLUMN_NAME));
-            String items = cursor.getString(cursor.getColumnIndex(MyListContract.MyListEntry.COLUMN_ITEMS));
+            long id = cursor.getLong(cursor.getColumnIndex(MyListContract.MyListEntry._ID));
 
             holder.tvNom.setText(name);
+            holder.itemView.setTag(id);
         }
     }
 
