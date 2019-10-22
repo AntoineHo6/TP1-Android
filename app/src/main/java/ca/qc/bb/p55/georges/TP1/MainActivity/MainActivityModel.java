@@ -95,7 +95,14 @@ public class MainActivityModel {
     public void updateListsItems(String listName, String listItems) {
         ContentValues cv = new ContentValues();
         cv.put(MyListEntry.COLUMN_NAME, listName);
-        cv.put(MyListEntry.COLUMN_ITEMS, listItems);
+
+        if (listItems.isEmpty()) {
+            cv.put(MyListEntry.COLUMN_ITEMS, "");
+            // TODO: FIX BUG EMPTY ITEM
+        }
+        else {
+            cv.put(MyListEntry.COLUMN_ITEMS, listItems);
+        }
 
         dataBase.update(MyListEntry.TABLE_NAME, cv, "name="+"'" + listName + "'", null);
     }

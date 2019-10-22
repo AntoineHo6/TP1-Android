@@ -64,9 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String listName = data.getStringExtra("listName");
                 String listItems = data.getStringExtra("listItems");
-                if (listItems != null && !listItems.isEmpty()) {
-                    mainActivityModel.updateListsItems(listName, listItems);
-                }
+                mainActivityModel.updateListsItems(listName, listItems);
+
             }
         }
     }

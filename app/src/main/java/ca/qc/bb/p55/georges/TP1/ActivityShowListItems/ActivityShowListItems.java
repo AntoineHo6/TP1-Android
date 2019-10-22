@@ -65,18 +65,18 @@ public class ActivityShowListItems extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                Intent intent = new Intent();
+                intent.putExtra("listName", activityShowListItemsModel.getListName());
                 if (activityShowListItemsModel.getAdapter().getList().isEmpty()) {
-                    finish();
+                    intent.putExtra("listItems", "");
                 }
                 else {
-                    Intent intent = new Intent();
                     activityShowListItemsModel.updateTokenizedItems();
                     String tokenizedItems = activityShowListItemsModel.getTokenizedItems();
-                    intent.putExtra("listName", activityShowListItemsModel.getListName());
                     intent.putExtra("listItems", tokenizedItems);
-                    setResult(RESULT_OK, intent);
-                    finish();
                 }
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
             case R.id.addMenu:
                 openActivityAddItem();
