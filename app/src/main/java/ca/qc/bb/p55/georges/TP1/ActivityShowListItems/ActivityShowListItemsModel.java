@@ -82,4 +82,15 @@ public class ActivityShowListItemsModel {
         adapter.getList().remove(position);
         adapter.notifyDataSetChanged();
     }
+
+    public String getFormattedItemsForEmail() {
+        String[] parts = tokenizedItems.split(";");
+        String formattedItems = "";
+
+        for (int i = 0; i < parts.length; i++) {
+            formattedItems += "- " + parts[i] + "\n";
+        }
+
+        return formattedItems;
+    }
 }

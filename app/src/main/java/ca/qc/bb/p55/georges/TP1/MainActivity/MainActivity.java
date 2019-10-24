@@ -56,16 +56,19 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
+                String activityType = data.getStringExtra("activityType");
 
-                String nom = data.getStringExtra("nom");
-                if (nom != null) {
-                    addList(nom);
+                if (activityType.equals("ActivityAddObject")) {
+                    String nom = data.getStringExtra("nom");
+                    if (nom != null) {
+                        addList(nom);
+                    }
                 }
-
-                String listName = data.getStringExtra("listName");
-                String listItems = data.getStringExtra("listItems");
-                mainActivityModel.updateListsItems(listName, listItems);
-
+                else {
+                    String listName = data.getStringExtra("listName");
+                    String listItems = data.getStringExtra("listItems");
+                    mainActivityModel.updateListsItems(listName, listItems);
+                }
             }
         }
     }
@@ -119,6 +122,5 @@ public class MainActivity extends AppCompatActivity {
 /*
     TODO:
           10. add hints on textViews
-          11. find a way to know which activity ended in mainActivity as to not confucious both
           12. instead of identifying a list by its name, do it by its id
  */

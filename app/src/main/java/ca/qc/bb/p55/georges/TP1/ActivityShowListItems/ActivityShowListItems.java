@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import ca.qc.bb.p55.georges.TP1.ActivityAddObject.ActivityAddObject;
 import ca.qc.bb.p55.georges.client.R;
@@ -48,6 +51,18 @@ public class ActivityShowListItems extends AppCompatActivity {
                 removeItem(viewHolder.getAdapterPosition());
             }
         }).attachToRecyclerView(activityShowListItemsModel.getRecyclerView());
+
+        FloatingActionButton fab = findViewById(R.id.fabEmail);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_SUBJECT, activityShowListItemsModel.getListName());
+                intent.putExtra(Intent.EXTRA_TEXT, activityShowListItemsModel.getFormattedItemsForEmail());
+                intent.setType("message/rfc822");
+                startActivity(Intent.createChooser(intent, "Choose an email client"));
+            }
+        });
     }
 
     @Override
@@ -66,6 +81,7 @@ public class ActivityShowListItems extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intent = new Intent();
+                intent.putExtra("activityType", "ActivityShowListItems");
                 intent.putExtra("listName", activityShowListItemsModel.getListName());
                 if (activityShowListItemsModel.getAdapter().getList().isEmpty()) {
                     intent.putExtra("listItems", "");

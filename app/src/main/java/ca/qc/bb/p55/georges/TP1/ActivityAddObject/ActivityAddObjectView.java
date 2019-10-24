@@ -18,12 +18,13 @@ public class ActivityAddObjectView {
     public void presetValues(String nom, String type) {
         ((EditText) activityAddObject.findViewById(R.id.editTextListName)).setText(nom);
 
-        // modifie add object text
         if (type.equals("list")) {
             ((TextView) activityAddObject.findViewById(R.id.txtViewListName)).setText(R.string.newList);
+            ((EditText) activityAddObject.findViewById(R.id.editTextListName)).setHint(R.string.YourNewListsName);
         }
         else {
             ((TextView) activityAddObject.findViewById(R.id.txtViewListName)).setText(R.string.newItem);
+            ((EditText) activityAddObject.findViewById(R.id.editTextListName)).setHint(R.string.YourNewItemsContent);
         }
     }
 }

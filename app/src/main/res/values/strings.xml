@@ -6,4 +6,7 @@
     <string name="submit">Submit</string>
     <string name="newList">New list name</string>
     <string name="askEnterSomething">Please enter something</string>
+    <string name="yourLists">Your lists</string>
+    <string name="YourNewListsName">Your new list\'s name</string>
+    <string name="YourNewItemsContent">Your new item\'s content</string>
 </resources>

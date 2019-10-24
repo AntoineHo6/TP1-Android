@@ -43,10 +43,6 @@ public class MainActivityModel {
 
     }
 
-//    public ArrayList<MyList> getList() {
-//        return list;
-//    }
-
     public RecyclerView getRecyclerView() {
         return recyclerView;
     }
@@ -62,11 +58,8 @@ public class MainActivityModel {
     public void addListToDB(String name) {
             ContentValues cv = new ContentValues();
             cv.put(MyListContract.MyListEntry.COLUMN_NAME, name);
-            //cv.put(MyListContract.MyListEntry.COLUMN_ITEMS, items);
-
             dataBase.insert(MyListContract.MyListEntry.TABLE_NAME, null, cv);
             adapter.swapCursor(getAllLists());
-
     }
 
     private Cursor getAllLists() {

@@ -44,6 +44,7 @@ public class ActivityAddObject extends AppCompatActivity {
                     Intent intent = new Intent();
                     String nom = ((EditText) findViewById(R.id.editTextListName)).getText().toString();
                     intent.putExtra("nom", nom);
+                    intent.putExtra("activityType", "ActivityAddObject");
                     setResult(RESULT_OK, intent);
                     finish();
                 }

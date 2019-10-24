@@ -8,27 +8,39 @@
 
     <TextView
         android:id="@+id/txtViewListName"
-        android:layout_width="153dp"
-        android:layout_height="46dp"
+        android:layout_width="365dp"
+        android:layout_height="45dp"
         android:text="TextView"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="403dp"
-        android:layout_height="546dp"
+        android:layout_width="406dp"
+        android:layout_height="549dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtViewListName"
-        app:layout_constraintVertical_bias="0.949" />
+        app:layout_constraintVertical_bias="0.951" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEmail"
+        android:layout_width="58dp"
+        android:layout_height="55dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/ic_email" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

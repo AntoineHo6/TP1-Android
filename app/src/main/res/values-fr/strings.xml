@@ -7,4 +7,7 @@
     <string name="submit">Soumettre</string>
     <string name="newList">Nom de la nouvelle liste</string>
     <string name="askEnterSomething">Ne laissez le pas vide!</string>
+    <string name="yourLists">Vos listes</string>
+    <string name="YourNewListsName">Le nom de votre nouvelle liste</string>
+    <string name="YourNewItemsContent">Le contenu de votre nouveau item</string>
 </resources>
