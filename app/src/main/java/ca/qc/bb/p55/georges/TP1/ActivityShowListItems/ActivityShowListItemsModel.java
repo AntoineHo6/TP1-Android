@@ -84,11 +84,14 @@ public class ActivityShowListItemsModel {
     }
 
     public String getFormattedItemsForEmail() {
-        String[] parts = tokenizedItems.split(";");
         String formattedItems = "";
 
-        for (int i = 0; i < parts.length; i++) {
-            formattedItems += "- " + parts[i] + "\n";
+        if (tokenizedItems != null) {
+            String[] parts = tokenizedItems.split(";");
+
+            for (int i = 0; i < parts.length; i++) {
+                formattedItems += "- " + parts[i] + "\n";
+            }
         }
 
         return formattedItems;
