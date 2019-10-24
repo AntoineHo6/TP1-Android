@@ -96,9 +96,8 @@ public class MainActivityModel {
         ContentValues cv = new ContentValues();
         cv.put(MyListEntry.COLUMN_NAME, listName);
 
-        if (listItems.isEmpty()) {
-            cv.put(MyListEntry.COLUMN_ITEMS, "");
-            // TODO: FIX BUG EMPTY ITEM
+        if (listItems == null || listItems.isEmpty()) {
+            cv.putNull(MyListEntry.COLUMN_ITEMS);
         }
         else {
             cv.put(MyListEntry.COLUMN_ITEMS, listItems);
