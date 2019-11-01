@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(int position, String nom) {
                 openActivityShowListItems(position, nom);
             }
-
         });
     }
 
@@ -116,11 +115,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-/*
-    TODO:
-          10. add hints on textViews
-          12. instead of identifying a list by its name, do it by its id
- */

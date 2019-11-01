@@ -121,6 +121,7 @@ public class ActivityShowListItems extends AppCompatActivity {
 
     private void addItemToList(String content) {
         activityShowListItemsModel.addItemToAdapter(content);
+        activityShowListItemsModel.updateTokenizedItems();
         activityShowListItemsView.updateItemsInterface(activityShowListItemsModel.getAdapter());
     }
 

@@ -18,6 +18,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListViewHolder> {
 
     private Context context;
     private Cursor cursor;
+    private MyListViewHolder holder;
 
     public MyListAdapter(Context context, Cursor cursor) {
         this.context = context;
@@ -47,6 +48,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListViewHolder> {
 
             holder.tvNom.setText(name);
             holder.itemView.setTag(id);
+            this.holder = holder;
         }
     }
 

@@ -20,6 +20,7 @@ public class MainActivityModel {
     private RecyclerView recyclerView;
     private MyListAdapter adapter;
     private SQLiteDatabase dataBase;
+    private int currentSelectedListIdx;
 
     public MainActivityModel(AppCompatActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -51,8 +52,16 @@ public class MainActivityModel {
         return adapter;
     }
 
-    public RecyclerView.LayoutManager getLayoutManager() {
-        return layoutManager;
+    public SQLiteDatabase getDataBase() {
+        return dataBase;
+    }
+
+    public int getCurrentSelectedListIdx() {
+        return currentSelectedListIdx;
+    }
+
+    public void setCurrentSelectedListIdx(int currentSelectedListIdx) {
+        this.currentSelectedListIdx = currentSelectedListIdx;
     }
 
     public void addListToDB(String name) {
