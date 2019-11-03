@@ -21,7 +21,7 @@ public class ActivityAddObject extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_list);
+        setContentView(R.layout.activity_add_object);
 
         activityAddObjectModel = new ActivityAddObjectModel(this);
         activityAddObjectView = new ActivityAddObjectView(this);
